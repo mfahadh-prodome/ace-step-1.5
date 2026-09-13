@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReleaseBridge Release",
+  "type": "object",
+  "required": ["release_id", "artist", "title", "status", "master_file", "rights_status"],
+  "properties": {
+    "release_id": {"type": "string", "pattern": "^RB-[0-9]{4}-[0-9]{4}$"},
+    "artist": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "genre": {"type": "string"},
+    "bpm": {"type": "number", "minimum": 1},
+    "key": {"type": "string"},
+    "release_date": {"type": ["string", "null"], "format": "date"},
+    "status": {"enum": ["draft", "qc", "approved", "ready", "published", "failed"]},
+    "master_file": {"type": "string"},
+    "cover_file": {"type": ["string", "null"]},
+    "rights_status": {"enum": ["pending", "cleared", "blocked"]},
+    "ai_source": {"type": "string"},
+    "isrc": {"type": ["string", "null"]},
+    "upc": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
